@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Assignment 3</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+    body, h1,h2,h3,h4,h5,h6 { font-family: "georgia", serif}
+    .w3-row-padding img {margin-bottom: 12px}
+    .w3-sidebar {width: 120px;background: #222;}
+    #main {margin-left: 120px}
+    @media only screen and (max-width: 600px) {#main {margin-left: 0}}
+    </style>
+  </head>
+<body class="w3-black">
+
+<style>
+
+
+        main {
+            margin: 20px;
+            text-align: center;
+        }
+
+        h2 {
+            color:  #a6a6a6;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0;
+        }
+
+        input {
+            padding: 8px;
+            margin: 5px;
+            font-size: 16px;
+        }
+
+        select {
+            padding: 10px;
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+
+        button {
+            background-color:  #999999;
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            font-family: "georgia", serif
+        }
+
+        button:hover {
+            background-color: #4d4d4d;
+        }
+
+        #results {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+
+        a {
+            text-decoration: none;
+            color: #584066;
+        }
+
+        a:hover {
+            color: #999999;
+        }
+</style>
+
+
+<body>
+
+
+    <main>
+        <br>
+        <h2> Factorial, Sum, Average of N Natural Numbers </h2>
+        <label for = "nth_number"> Enter Number: </label>
+        <input type = "number" id = "nth_number">
+
+        <label for = "calculation_scale"> Calculation Scale: </label>
+        <select id = "calculation_scale">
+            <option value = "nth_factorial"> Factorial </option>
+            <option value = "nth_sum"> Sum </option>
+            <option value = "nth_average"> Average </option>
+        </select>
+
+        <br>
+        <button onclick = "calculate()"> Calculate </button>
+        <a href= "./index.html"> <button onclick = "button"> home </button></a>
+        <div id = "results"></div>
+    </main>
+</body>
+
+<script>
+    function calculate() {
+        var nth_number = parseInt(document.getElementById("nth_number").value);
+        var calculation_scale = document.getElementById("calculation_scale").value; 
+        var results = document.getElementById("results");
+        var factorial = 1;
+        var sum = 0;
+        var average = 0;
+        var counter = 1;
+
+        if (isNaN(nth_number) || nth_number < 0) {
+            results.innerHTML = "Please enter a positive integer.";
+            return;
+        }
+
+        if (calculation_scale == "nth_factorial") {
+            while (counter <= nth_number) {
+                factorial *= counter;
+                counter = counter + 1;
+            }
+        results.innerHTML = "The factorial of " + nth_number + " is: " + factorial;
+        }
+
+        else if (calculation_scale == "nth_sum") {
+            do {
+                sum += counter;
+                counter = counter + 1;
+            }
+
+            while (counter <= nth_number);
+        results.innerHTML = "The sum of numbers from 1 to " + nth_number + " is: " + sum;
+        }
+
+        else if (calculation_scale == "nth_average") {
+            for (counter = 1; counter <= nth_number; counter++) {
+                sum += counter;
+            }
+            average = sum / nth_number;
+        results.innerHTML = "The average of numbers from 1 to " + nth_number + " is: " + average;
+        }
+    }    
+</script>
+</html>
