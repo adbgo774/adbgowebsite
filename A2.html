@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>assignmrnt 2</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+    body, h1,h2,h3,h4,h5,h6 { font-family: "georgia", serif}
+    .w3-row-padding img {margin-bottom: 12px}
+    .w3-sidebar {width: 120px;background: #222;}
+    #main {margin-left: 120px}
+    @media only screen and (max-width: 600px) {#main {margin-left: 0}}
+    </style>
+  </head>
+<body class="w3-black">
+
+<style>
+
+
+        main {
+            margin: 20px;
+            text-align: center;
+        }
+
+        h2 {
+            color:  #a6a6a6;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0;
+        }
+
+        input {
+            padding: 8px;
+            margin: 5px;
+            font-size: 16px;
+        }
+
+        select {
+            padding: 10px;
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+
+        button {
+            background-color:  #999999;
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            font-family: "georgia", serif
+        }
+
+        button:hover {
+            background-color: #4d4d4d;
+        }
+
+        #results {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+
+        a {
+            text-decoration: none;
+            color: #584066;
+        }
+
+        a:hover {
+            color: #999999;
+        }
+</style>
+
+    
+
+<body>
+
+
+
+
+    <main>
+        <br>
+        <h2>Income Tax Calculator</h2>
+        <label for = "income"> Enter Income: </label>
+        <input type = "number" id = "income">
+		
+        <br>
+        <button onclick = "income_tax()"> Calculate </button>
+        <a href= "./index.html"> <button onclick = "button"> home </button></a>
+
+        <div id = "results"></div>
+    </main>
+
+</body>
+
+<script>
+    function income_tax() {
+        var income = parseFloat(document.getElementById("income").value);
+        var results = document.getElementById("results");
+
+        if (250000 < income && income <= 400000) {
+            var calculate_1 = (Number(income) - 250000) * 0.20
+            results.innerHTML = calculate_1.toFixed(2);
+        }
+
+        else if (400000 < income && income <= 800000) {
+            var calculate_2 = 30000 + ((Number(income) - 400000) * 0.25)
+            results.innerHTML = calculate_2.toFixed(2);
+        }
+
+        else if (800000 < income && income <= 2000000) {
+            var calculate_3 = ((Number(income) - 800000) * 0.30) + 130000
+            results.innerHTML = calculate_3.toFixed(2);
+        }
+
+        else if (2000000 < income && income <= 8000000) {
+            var calculate_4 = ((Number(income) - 2000000) * 0.32) + 490000
+            results.innerHTML = calculate_4.toFixed(2);
+        }
+
+        else if (income > 8000000) {
+            var calculate_5 = ((Number(income) - 8000000) * 0.35) + 2410000
+            results.innerHTML = calculate_5.toFixed(2);
+        }
+
+        else if (income < 250000) {
+            var calculate_6 = 0.00;
+            results.innerHTML = calculate_6.toFixed(2);
+        }
+    }
+</script>
+</html>
