@@ -3,109 +3,108 @@
 <head>
   <title>Assignment 4</title>
   <style>
-
     body {
-    font-family: "georia", serif;
-    background-color: black;
-    margin: 20px;
+      font-family: "georgia", serif;
+      background-color: black;
+      margin: 20px;
     }
 
-h2,h3,h4 {
-    text-align: center;
-    color: #a6a6a6;
-    font-family: "georgia", serif
-}
-
-form {
-    max-width: 400px;
-    margin: 20px auto;
-    padding: 20px;
-    border: 1px solid #DEDEDE;
-    border-radius: 0;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    background-color: white;
-    text-align: center;
+    h2, h3, h4 {
+      text-align: center;
+      color: #a6a6a6;
+      font-family: "georgia", serif;
     }
 
-label {
-    display: block;
-    margin-bottom: 8px;
+    form {
+      max-width: 400px;
+      margin: 20px auto;
+      padding: 20px;
+      border: 1px solid #DEDEDE;
+      border-radius: 0;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+      background-color: white;
+      text-align: center;
     }
 
-input {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 12px;
-    box-sizing: border-box;
+    label {
+      display: block;
+      margin-bottom: 8px;
     }
 
-button {
-    background-color: #404040;
-    color: white;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 0;
-    cursor: pointer;
-    font-family: "georgia", serif
+    input {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 12px;
+      box-sizing: border-box;
     }
 
-button:hover {
-    background-color: #a6a6a6;
+    button {
+      background-color: #404040;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 0;
+      cursor: pointer;
+      font-family: "georgia", serif;
     }
 
-table {
-    min-width: 800px;
-    border-collapse: collapse;
-    margin: 25px 0;
-    font-size: 0.9em;
-    border-radius: 0;
-    overflow: hidden;
-    margin: auto auto;
+    button:hover {
+      background-color: #a6a6a6;
     }
 
-th {
-    background-color: #595959;
-    color: white;
-    text-align: left;
-    font-weight: bold;
+    table {
+      min-width: 800px;
+      border-collapse: collapse;
+      margin: 25px 0;
+      font-size: 0.9em;
+      border-radius: 0;
+      overflow: hidden;
+      margin: auto auto;
     }
 
-th, td {
-    padding: 12px 15px;
-}
-
-td::not:last-child {
-    background-color: white;
-    border-bottom: 1px solid #dddddd;
-}
-
-tbody tr:nth-of-type(odd) {
-    background-color: #999999;
-}
-
-tbody tr:nth-of-type(even) {
-    background-color: white;
-}
-
-tr:last-child {
-    border-bottom: 2px solid #a6a6a6;
-}
-
-a {
-    text-align: center;
-    color: #ffffff;
-    text-decoration: none;
-    font-weight: bold;
-    margin-top: 20px;
-    display: block;
+    th {
+      background-color: #595959;
+      color: white;
+      text-align: left;
+      font-weight: bold;
     }
 
-a:hover {
-    text-decoration: underline;
-    color: #a6a6a6;
+    th, td {
+      padding: 12px 15px;
     }
-   
-   #confirmationModal {
+
+    td::not:last-child {
+      background-color: white;
+      border-bottom: 1px solid #dddddd;
+    }
+
+    tbody tr:nth-of-type(odd) {
+      background-color: #999999;
+    }
+
+    tbody tr:nth-of-type(even) {
+      background-color: white;
+    }
+
+    tr:last-child {
+      border-bottom: 2px solid #a6a6a6;
+    }
+
+    a {
+      text-align: center;
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: bold;
+      margin-top: 20px;
+      display: block;
+    }
+
+    a:hover {
+      text-decoration: underline;
+      color: #a6a6a6;
+    }
+
+    #confirmationModal {
       display: none;
       position: fixed;
       top: 50%;
@@ -117,7 +116,8 @@ a:hover {
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
       z-index: 2;
     }
-      #overlay {
+
+    #overlay {
       display: none;
       position: fixed;
       top: 0;
@@ -137,7 +137,7 @@ a:hover {
   <label for="employeeName">Employee Name:</label>
   <input type="text" id="employeeName" required><br>
 
-  <label for="daysWorked" >Days Worked:</label>
+  <label for="daysWorked">Days Worked:</label>
   <input type="number" id="daysWorked" required><br>
 
   <label for="dailyRate">Daily Rate:</label>
@@ -157,12 +157,9 @@ a:hover {
 
 <div id="payrollTable"></div>
 
-
-
 <button onclick="location.href='./index.html'">
-    <i class="fa fa- home w3-large"></i> home 
+  <i class="fa fa-home w3-large"></i> home
 </button>
-
 
 <div id="overlay"></div>
 <div id="confirmationModal">
@@ -176,8 +173,8 @@ a:hover {
   let payrollList = [];
 
   function calculatePay(daysWorked, dailyRate, deductionAmount) {
-    const grossPay = daysWorked * dailyRate;
-    const netPay = grossPay - deductionAmount;
+    const grossPay = (daysWorked * dailyRate).toFixed(2);
+    const netPay = (grossPay - deductionAmount).toFixed(2);
     return { grossPay, netPay };
   }
 
@@ -195,8 +192,8 @@ a:hover {
 
       const row = table.insertRow(index + 1);
       row.innerHTML = `<td>${index + 1}</td><td>${employee.name}</td>
-      <td>${daysWorked}</td><td>${dailyRate}</td><td>${grossPay}</td>
-      <td>${deductionAmount}</td><td>${netPay}</td>`;
+        <td>${daysWorked}</td><td>${dailyRate.toFixed(2)}</td><td>${grossPay}</td>
+        <td>${deductionAmount.toFixed(2)}</td><td>${netPay}</td>`;
     });
 
     tableDiv.appendChild(table);
@@ -212,40 +209,36 @@ a:hover {
     document.getElementById('confirmationModal').style.display = 'none';
   }
 
-  document.getElementById("addEmployee").addEventListener("click",
-    function addEmployee() {
-      const name = document.getElementById('employeeName').value;
-      const daysWorked = parseInt(document.getElementById('daysWorked').value);
-      const dailyRate = parseInt(document.getElementById('dailyRate').value);
-      const deductionAmount = parseInt(document.getElementById('deductionAmount').value);
+  document.getElementById("addEmployee").addEventListener("click", function addEmployee() {
+    const name = document.getElementById('employeeName').value;
+    const daysWorked = parseInt(document.getElementById('daysWorked').value);
+    const dailyRate = parseFloat(document.getElementById('dailyRate').value);
+    const deductionAmount = parseFloat(document.getElementById('deductionAmount').value);
 
-      payrollList.push({ name, daysWorked, dailyRate, deductionAmount });
+    payrollList.push({ name, daysWorked, dailyRate, deductionAmount });
+    displayPayrollTable();
+  });
+
+  document.getElementById("deleteEmployee").addEventListener("click", function () {
+    openModal();
+  });
+
+  document.getElementById("confirmDelete").addEventListener("click", function () {
+    const lineNumber = parseInt(document.getElementById('lineNumber').value);
+
+    if (lineNumber >= 1 && lineNumber <= payrollList.length) {
+      payrollList.splice(lineNumber - 1, 1);
       displayPayrollTable();
-    });
-
-  document.getElementById("deleteEmployee").addEventListener("click",
-    function () {
-      openModal();
-    });
-
-  document.getElementById("confirmDelete").addEventListener("click",
-    function () {
-      const lineNumber = parseInt(document.getElementById('lineNumber').value);
-
-      if (lineNumber >= 1 && lineNumber <= payrollList.length) {
-        payrollList.splice(lineNumber - 1, 1);
-        displayPayrollTable();
-        closeModal();
-      } else {
-        alert("Invalid line number.");
-        closeModal();
-      }
-    });
-
-  document.getElementById("cancelDelete").addEventListener("click",
-    function () {
       closeModal();
-    });
+    } else {
+      alert("Invalid line number.");
+      closeModal();
+    }
+  });
+
+  document.getElementById("cancelDelete").addEventListener("click", function () {
+    closeModal();
+  });
 </script>
 </body>
 </html>
